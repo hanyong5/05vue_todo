@@ -8,27 +8,45 @@
       </button>
   </div>
   
+  <modal v-if="modal" @click="modal=false">
+      <template v-slot:header>경고</template>
+      <template v-slot:footer  @click="modal=false">
+          할 일을 입력하세요
+          <i class="closeModalBtn fa fa-times"></i>
+      </template>
+  </modal>
+  
 </template>
 
 <script>
+import modal from './modal.vue'
 export default {
     name:'input',
     data(){
         return{
             newTodoItem:'',
+            modal:false,
         }
     },
     methods:{
         addTodo(){
             console.log(this.newTodoItem);
-            let value = this.newTodoItem;
-            //localStorage.setItem(value,value);
-            this.$emit('addTodo',value);
-            this.clearInput();
+            if(this.newTodoItem !== ''){
+                let value = this.newTodoItem && this.newTodoItem.trim();
+                //localStorage.setItem(value,value);
+                this.$emit('addTodo',value);
+                this.clearInput();
+            }else{
+                this.modal = true;
+            }
+
         },
         clearInput(){
             this.newTodoItem = '';
         }
+    },
+    components:{
+        modal,
     }
 }
 </script>

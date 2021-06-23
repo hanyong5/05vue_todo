@@ -9,5 +9,5 @@ export default {
 </script>
 
 <style>
-h2{text-align:center}
+h2{text-align:center;margin:10px}
 </style>

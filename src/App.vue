@@ -2,7 +2,7 @@
   <todoheader></todoheader>
   <todoinput @addTodo="addTodo"/>
   <todolist :todoItems="todoItems" @removeTodo="removeTodo"/>
-  <todofooter />
+  <todofooter @clearTodo="clearTodo"/>
 
 </template>
 
@@ -33,6 +33,10 @@ export default {
     }
   },
   methods:{
+    clearTodo(){
+      localStorage.clear();
+      this.todoItems=[]
+    },
     addTodo(todoItem){
       localStorage.setItem(todoItem,todoItem)
       this.todoItems.push(todoItem)
