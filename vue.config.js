@@ -1,8 +1,11 @@
 module.exports = {
     pwa: {
       name: 'MyTodo',
-      themeColor: '#0000ff',
+      themeColor: '#000000',
       msTileColor: '#000000',
+      manifestOptions: {
+        background_color: "#000000"
+      },
       workboxOptions: {
         exclude: [/\.map$/, /manifest\.json$/, 'index.html']
       }
